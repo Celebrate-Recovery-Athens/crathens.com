@@ -1,0 +1,11 @@
+# This repository is PUBLIC — it is the source for crathens.com on GitHub Pages.
+# Anything committed here is world-readable, permanently and immediately.
+
+# Operational runbook. Contains no passwords, but it does name the root
+# account, every service in the chain, and the account-recovery structure,
+# which together are a useful map for anyone trying to socially engineer
+# their way into the domain or mailbox. Keep it local or somewhere private.
+SETUP-RUNBOOK.md
+
+# Session scratch
+.tmp/
