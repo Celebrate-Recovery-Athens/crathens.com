@@ -283,12 +283,17 @@ is ever misconfigured.
 
 ### 5.1 Content
 
-- [ ] Open `index.html`. Search for `[[` and replace every placeholder:
-      - `[[KEYWORD]]` and `[[FLOCKNOTE NUMBER]]` — from 3.3
-      - `[[FLOCKNOTE JOIN LINK]]` — the public join URL from Flocknote
-      - `[[LEADER NAME]]` and `[[PHONE]]` — your CR leader's name and
-        real cell number
-- [ ] Delete the `.todo` CSS rule from the stylesheet block.
+- [x] Leader name filled in (Phyllis). No phone number on the page, by
+      choice — `info@crathens.com` is the only public contact.
+- [ ] The Flocknote signup block in "Stay connected" is **commented out**
+      until Phase 3 is done. Until then the contact list is kept by hand
+      and that email address is the only intake. Nothing else on the page
+      is a placeholder, so the site is safe to publish as-is.
+- [ ] When Flocknote exists: uncomment that block, replace `[[KEYWORD]]`
+      and `[[FLOCKNOTE NUMBER]]` (from 3.3) and `[[FLOCKNOTE JOIN LINK]]`
+      (the public join URL), delete the interim email list item, and
+      restore the intro line to "Two ways, whichever is easier."
+- [ ] Only then, delete the `.todo` CSS rule from the stylesheet block.
 - [ ] Decide: keep the `mailto:` link for church inquiries, or swap in a
       Formspree free-tier form.
 
@@ -297,18 +302,34 @@ is ever misconfigured.
 - [ ] Confirm the trademark footer wording with your CR representative.
 - [ ] Have your CR leader read the whole page, with attention to the tone
       of the paragraph about the previous church.
-- [ ] Confirm there are **no** attendee names, no photos of attendees, no
-      meeting content, and no meeting time or address until a venue is
-      signed.
+- [ ] Confirm there are **no** attendee names, no photos of attendees, and
+      no meeting content.
+- [ ] Living Hope Church and "Friday nights" **are** on the page on purpose,
+      because that arrangement is ending and people need to know where to go
+      until then. Do not post the **next** venue until it is actually signed.
+
+### 5.2a Calendar this — the page expires
+
+The homepage currently tells people to show up Friday nights at Living Hope
+through **Friday, September 25, 2026**. On **Saturday, September 26** that
+text becomes wrong, and a recovery page that sends someone to an empty
+building is worse than one that says nothing.
+
+- [ ] Set a reminder for Sept 26. Replace the hero's second line and the
+      first body paragraph with the "between homes" wording (it is in the
+      git history from before this change), leaving the email signup as-is.
 
 ### 5.3 End-to-end test
 
 - [ ] Load `crathens.com` on a phone. Most of your traffic will be mobile.
 - [ ] Confirm the padlock — HTTPS working.
-- [ ] Text the keyword from a phone that isn't already subscribed.
-- [ ] Click the email signup link, complete double opt-in, confirm you
-      land in `Attendees`.
+- [ ] Email `info@crathens.com` from an outside address. Confirm it arrives
+      in Zoho and gets written into the notebook.
 - [ ] Submit a church inquiry. Confirm it arrives at `info@crathens.com`.
+- [ ] *(After Phase 3 only)* Text the keyword from a phone that isn't
+      already subscribed.
+- [ ] *(After Phase 3 only)* Click the email signup link, complete double
+      opt-in, confirm you land in `Attendees`.
 - [ ] Tab through the page with a keyboard. Confirm links show a visible
       focus outline.
 
