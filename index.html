@@ -3,35 +3,57 @@
   Celebrate Recovery — Athens, GA
   Single static page. No build step, no dependencies.
 
-  BEFORE PUBLISHING, replace every [[BRACKETED]] placeholder below.
-  They render highlighted on the page so you can spot them.
-  Search this file for "[[" to find them all.
+  STATUS: nothing on the rendered page is a placeholder. The only
+  [[BRACKETED]] values left in this file sit inside the commented-out
+  Flocknote block in "Stay connected", and are inert until that block is
+  restored. See the note there before uncommenting it.
 
-  Deliberately NOT on this page: meeting times (until a venue is
-  confirmed), attendee names, photos of attendees, anything about
-  what is shared in meetings.
+  Deliberately NOT on this page: attendee names, photos of attendees,
+  anything about what is shared in meetings. Living Hope is named only
+  because that arrangement is ending and people need to know. Do not
+  post the NEXT venue until it is actually signed.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Celebrate Recovery — Athens, Georgia</title>
-<meta name="description" content="A Christ-centered recovery group in Athens, Georgia. Free, confidential, open to anyone. We are between locations and will announce our new meeting home soon.">
+<meta name="description" content="A Christ-centered recovery group in Athens, Georgia. Free, confidential, open to anyone. We meet Friday nights at Living Hope Church through September 25, and will announce our new meeting home soon.">
 <meta property="og:title" content="Celebrate Recovery — Athens, Georgia">
-<meta property="og:description" content="We're still here. We're between meeting homes, and we'll let you know the moment we have a new one.">
+<meta property="og:description" content="We're still meeting Friday nights at Living Hope Church through September 25. After that we'll be between homes, and we'll let you know the moment we have a new one.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#161412">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23161412'/><rect x='7' y='7' width='18' height='18' rx='3' fill='%23c8102e'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 <style>
+  /* ---------------------------------------------------------------
+     Red / white / black, warmed.
+
+     The ground is a warm charcoal rather than pure black, and the text
+     is a warm off-white rather than pure white. Pure #fff on pure #000
+     measures ~18:1 and glares — the letterforms bloom, which is worst
+     on phone OLED screens at night. The cream below sits near 12:1:
+     still far past AAA, but easy to read for a long stretch.
+
+     Deep brand red carries the solid shapes (top rule, card edges);
+     a lighter red carries text, because deep red on charcoal does not
+     have the contrast to be read as body copy.
+     --------------------------------------------------------------- */
   :root {
-    --paper:      #eef0ea;
-    --paper-deep: #e0e4da;
-    --ink:        #1f2a24;
-    --ink-soft:   #4a574f;
-    --accent:     #7a5c26;
-    --rule:       #c3cbbe;
-    --measure:    34rem;
+    color-scheme: dark;
+
+    --paper:       #161412;  /* warm charcoal ground */
+    --card:        #201d19;  /* lifted surface */
+    --band:        #1c1915;  /* the church band */
+    --ink:         #ded6c9;  /* warm cream, ~12.3:1 on --paper */
+    --ink-soft:    #9d9488;  /* ~6.2:1 */
+    --accent:      #ef5566;  /* red for text and links, ~5.6:1 */
+    --accent-deep: #c8102e;  /* brand red for solid shapes only */
+    --rule:        #2f2b26;
+
+    --measure: 34rem;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -40,12 +62,15 @@
 
   body {
     margin: 0;
+    border-top: 5px solid var(--accent-deep);
     background: var(--paper);
     color: var(--ink);
     font-family: "Newsreader", Georgia, "Times New Roman", serif;
     font-size: 1.125rem;
-    line-height: 1.65;
+    line-height: 1.68;
     font-weight: 400;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
   }
 
   .wrap {
@@ -58,6 +83,7 @@
     color: var(--accent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
+    transition: text-decoration-thickness 0.15s ease;
   }
   a:hover { text-decoration-thickness: 2px; }
   a:focus-visible {
@@ -67,85 +93,123 @@
   }
 
   /* ---- masthead ---- */
-  .masthead {
-    padding-block: 3rem 0;
-  }
+  .masthead { padding-block: 2.75rem 0; }
   .masthead h1 {
-    font-size: 1.0625rem;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     margin: 0;
   }
   .masthead h1 span {
     display: block;
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    font-size: 0.8125rem;
     color: var(--ink-soft);
   }
 
   /* ---- hero: the type is the hero ---- */
-  .lede {
-    padding-block: 2.75rem 3.25rem;
-  }
+  .lede { padding-block: 2.5rem 3.25rem; }
   .lede p {
     font-size: clamp(2rem, 8vw, 3.25rem);
     font-weight: 300;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
     margin: 0;
     text-wrap: balance;
   }
+  .lede em {
+    display: block;
+    font-style: normal;
+    color: var(--accent);
+  }
+  /* the supporting line is the detail, not the headline — size it down
+     so the hero stays one statement plus a caption, not four equal lines */
+  .lede span {
+    display: block;
+    margin-top: 0.65rem;
+    font-size: clamp(1.1875rem, 4vw, 1.6875rem);
+    line-height: 1.3;
+    letter-spacing: -0.008em;
+    color: var(--ink-soft);
+  }
 
-  section { padding-block: 2.25rem; }
-
+  section { padding-block: 2.5rem; }
   section + section { border-top: 1px solid var(--rule); }
 
   h2 {
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.3;
-    margin: 0 0 0.75rem;
+    letter-spacing: -0.005em;
+    margin: 0 0 0.85rem;
+  }
+  /* short red mark above each heading, for editorial rhythm */
+  h2::before {
+    content: "";
+    display: block;
+    width: 1.75rem;
+    height: 3px;
+    margin-bottom: 0.9rem;
+    border-radius: 2px;
+    background: var(--accent-deep);
   }
 
-  p { margin: 0 0 1rem; }
+  p { margin: 0 0 1rem; text-wrap: pretty; }
   p:last-child { margin-bottom: 0; }
 
   .quiet { color: var(--ink-soft); }
 
-  /* ---- the two ways to stay reachable ---- */
+  /* the one date on the page that people need to actually retain */
+  .date { color: var(--ink); font-weight: 600; }
+
+  /* ---- the ways to stay reachable ---- */
   .ways {
     list-style: none;
-    margin: 1.25rem 0 0;
+    margin: 1.5rem 0 0;
     padding: 0;
+    display: grid;
+    gap: 0.75rem;
   }
   .ways li {
-    padding-block: 0.9rem;
-    border-top: 1px solid var(--rule);
+    padding: 1.05rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent-deep);
+    border-radius: 5px;
+    transition: border-color 0.15s ease;
   }
-  .ways li:last-child { border-bottom: 1px solid var(--rule); }
+  .ways li:hover { border-color: var(--accent); }
   .ways strong {
     display: block;
     font-weight: 600;
   }
   .ways .how {
+    display: block;
+    margin-top: 0.3rem;
     color: var(--ink-soft);
     font-size: 1rem;
+    line-height: 1.55;
   }
 
   /* ---- church band: a different audience, so a different ground ---- */
   .for-churches {
-    background: var(--paper-deep);
-    border-top: 1px solid var(--rule);
-    padding-block: 2.75rem;
-    margin-top: 2.25rem;
+    margin-top: 2.5rem;
+    padding-block: 3rem;
+    background: var(--band);
+    border-block: 1px solid var(--rule);
   }
 
   footer {
     padding-block: 2.5rem 3.5rem;
-    font-size: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
     color: var(--ink-soft);
   }
-  footer p { margin-bottom: 0.5rem; }
+  footer p { margin-bottom: 0.6rem; }
+  footer .fine { font-size: 0.875rem; }
 
   /* ---- placeholder marker: remove this rule once the page is filled in ---- */
   .todo {
@@ -168,18 +232,33 @@
 </header>
 
 <div class="lede wrap">
-  <p>We're still meeting. We're just between homes right now.</p>
+  <p><em>We're still meeting.</em><span>Friday nights at Living Hope Church, through September 25.</span></p>
 </div>
 
 <main>
   <section class="wrap">
-    <p>Our previous host church has concluded its sponsorship of this program. Our leaders and our group are continuing, and we're looking for a new church home here in Athens.</p>
-    <p>Meetings will start back up as soon as we have a place. If you were coming before, we'd like to make sure you know where to find us when we do.</p>
+    <p>Our host church is concluding its sponsorship of this program at the end of September. We'll keep meeting on Friday nights at Living Hope Church through <span class="date">Friday, September 25</span> — that will be our last meeting there.</p>
+    <p>After that we'll be between homes for a while. Our leaders and our group are continuing, and we're looking for a new church home here in Athens. Meetings will start back up as soon as we have a place.</p>
+    <p>If you've been coming, we'd like to make sure you know where to find us when we do.</p>
   </section>
 
   <section class="wrap">
     <h2>Stay connected</h2>
-    <p class="quiet">Two ways, whichever is easier. We'll only message you about meeting times and locations. Your name and number are never shared or posted.</p>
+    <p class="quiet">Send us a note and we'll tell you the moment we have a meeting place. We'll only contact you about meeting times and locations. Your name and contact information are never shared or posted.</p>
+    <ul class="ways">
+      <li>
+        <strong><a href="mailto:info@crathens.com?subject=Please%20keep%20me%20posted">Email info@crathens.com</a></strong>
+        <span class="how">Just say you'd like to know when we have a location. That's all we need.</span>
+      </li>
+    </ul>
+
+    <!--
+      PENDING FLOCKNOTE (see SETUP-RUNBOOK.md phase 3). Until that account
+      exists the contact list is kept by hand, so the email address above is
+      the only intake. To restore: delete the single email item above,
+      uncomment this block, fill in the three placeholders, and change the
+      paragraph above back to "Two ways, whichever is easier."
+
     <ul class="ways">
       <li>
         <strong>Text <span class="todo">[[KEYWORD]]</span> to <span class="todo">[[FLOCKNOTE NUMBER]]</span></strong>
@@ -190,6 +269,7 @@
         <span class="how">One email when we have news. Nothing else.</span>
       </li>
     </ul>
+    -->
   </section>
 
   <section class="wrap">
@@ -203,15 +283,15 @@
 <aside class="for-churches">
   <div class="wrap">
     <h2>For churches</h2>
-    <p>We're an established group with trained leaders, currently seeking a host church in the Athens area. We meet one weeknight and need a large room plus a few smaller ones.</p>
+    <p>We're an established group with trained leaders, currently seeking a host church in the Athens area. We need one evening a week — a large room plus a few smaller ones — and we're flexible on which night.</p>
     <p>Celebrate Recovery is a ministry of the local church. We operate under the Celebrate Recovery DNA and under the oversight of our host church, and we're in contact with our regional Celebrate Recovery representative.</p>
-    <p>If your church has room on a weeknight, we'd be glad to talk. Reach <span class="todo">[[LEADER NAME]]</span> at <a href="mailto:info@crathens.com">info@crathens.com</a> or <span class="todo">[[PHONE]]</span>.</p>
+    <p>If your church has an evening free, we'd be glad to talk. Reach Phyllis at <a href="mailto:info@crathens.com">info@crathens.com</a>.</p>
   </div>
 </aside>
 
 <footer class="wrap">
   <p><a href="mailto:info@crathens.com">info@crathens.com</a></p>
-  <p>Celebrate Recovery is a registered trademark of Saddleback Church, used by permission under the Celebrate Recovery DNA.</p>
+  <p class="fine">Celebrate Recovery is a registered trademark of Saddleback Church, used by permission under the Celebrate Recovery DNA.</p>
 </footer>
 
 </body>
